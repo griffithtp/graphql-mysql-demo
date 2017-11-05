@@ -1,9 +1,10 @@
 const Sequelize = require('sequelize');
 const graphql = require('graphql');
 const { GraphQLObjectType, GraphQLString, GraphQLID } = graphql;
+const { mysql } = require('config.json')('./config.json');
 
-const sequelize = new Sequelize('dbname', 'root', 'pwd', {
-  host: 'localhost',
+const sequelize = new Sequelize(mysql.dbname, mysql.dbuser, mysql.dbpwd, {
+  host: mysql.host,
   dialect: 'mysql',
   pool: {
     max: 5,
